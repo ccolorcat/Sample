@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sample</string>
+    <string name="thumbnail">thumbnail</string>
+    <string name="common_net_error">network error</string>
+</resources>
