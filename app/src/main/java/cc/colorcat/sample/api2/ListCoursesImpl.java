@@ -1,4 +1,4 @@
-package cc.colorcat.sample.api;
+package cc.colorcat.sample.api2;
 
 import java.util.List;
 
@@ -10,12 +10,12 @@ import cc.colorcat.sample.entity.Course;
  * Date: 2018-08-23
  * GitHub: https://github.com/ccolorcat
  */
-public class GetCoursesImpl extends BaseImpl<List<Course>> implements Api.GetCourses {
+public class ListCoursesImpl extends BaseImpl<List<Course>> implements Api2.ListCourses {
     private int type;
     private int number;
 
     @Override
-    public Api.GetCourses get(int type, int number) {
+    public Api2.ListCourses get(int type, int number) {
         this.type = type;
         this.number = number;
         return this;
@@ -24,7 +24,7 @@ public class GetCoursesImpl extends BaseImpl<List<Course>> implements Api.GetCou
     @Override
     protected MRequest.Builder<List<Course>> builder() {
         return create()
-                .path(Api.GetCourses.PATH)
+                .path(Api2.ListCourses.PATH)
                 .add("type", Integer.toString(type))
                 .add("num", Integer.toString(number))
                 .get();

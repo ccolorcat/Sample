@@ -11,17 +11,5 @@ import cc.colorcat.sample.entity.Course;
  * GitHub: https://github.com/ccolorcat
  */
 public interface Api {
-    interface Base<T> {
-        Base<T> setCacheControl(long maxAge);
-
-        void send(MRequest.Listener<T> listener);
-
-        void cancel();
-    }
-
-    interface GetCourses extends Base<List<Course>> {
-        String PATH = "api/teacher";
-
-        GetCourses get(int type, int number);
-    }
+    ApiSender<List<Course>> listCourses(int type, int number);
 }

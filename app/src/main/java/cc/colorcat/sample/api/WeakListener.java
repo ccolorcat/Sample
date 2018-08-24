@@ -1,4 +1,4 @@
-package cc.colorcat.sample;
+package cc.colorcat.sample.api;
 
 import android.support.annotation.CallSuper;
 import android.util.Log;
@@ -9,6 +9,8 @@ import java.net.HttpURLConnection;
 
 import cc.colorcat.netbird.HttpStatus;
 import cc.colorcat.netbird.MRequest;
+import cc.colorcat.sample.R;
+import cc.colorcat.sample.api.ApiListener;
 import cc.colorcat.sample.contact.IBase;
 
 
@@ -16,10 +18,10 @@ import cc.colorcat.sample.contact.IBase;
  * Created by cxx on 2018/4/23
  * xx.ch@outlook.com
  */
-public abstract class WeakListener<V extends IBase.View, T> implements MRequest.Listener<T> {
+public abstract class WeakListener<V extends IBase.View, T> extends SimpleListener<T> {
     private Reference<V> ref;
 
-    public WeakListener(V v) {
+    protected WeakListener(V v) {
         this.ref = new WeakReference<>(v);
     }
 

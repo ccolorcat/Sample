@@ -1,4 +1,4 @@
-package cc.colorcat.sample;
+package cc.colorcat.sample.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

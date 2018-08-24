@@ -1,4 +1,4 @@
-package cc.colorcat.sample;
+package cc.colorcat.sample.api;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

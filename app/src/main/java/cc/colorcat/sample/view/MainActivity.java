@@ -19,6 +19,8 @@ import cc.colorcat.sample.contact.ICourse;
 import cc.colorcat.sample.entity.Course;
 import cc.colorcat.sample.presenter.CoursesPresenter;
 import cc.colorcat.vangogh.CircleTransformation;
+import cc.colorcat.vangogh.CornerTransformation;
+import cc.colorcat.vangogh.OvalTransformation;
 import cc.colorcat.vangogh.Transformation;
 import cc.colorcat.vangogh.VanGogh;
 
@@ -32,23 +34,29 @@ public class MainActivity extends BaseActivity implements ICourse.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView recyclerView = findViewById(R.id.rv_courses);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        RecyclerView rv = findViewById(R.id.rv_courses);
+        rv.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new SimpleRvAdapter<Course>(mCourses, R.layout.item_course) {
-            private Transformation transformation = new CircleTransformation();
+            private Transformation transformation = new CircleTransformation(
+                    4, obtainColor(R.color.colorAccent)
+            );
 
             @Override
             public void bindView(@NonNull RvHolder holder, @NonNull Course data) {
                 RvHolder.Helper helper = holder.getHelper();
-                ImageView image = helper.get(R.id.iv_icon);
-                VanGogh.with(image.getContext()).load(data.getPicSmall()).addTransformation(transformation).into(image);
+                VanGogh.get()
+                        .load(data.getPicSmall())
+                        .addTransformation(transformation)
+                        .into((ImageView) helper.get(R.id.iv_icon));
                 helper.setText(R.id.tv_serial_number, Integer.toString(holder.getAdapterPosition()))
                         .setText(R.id.tv_name, data.getName())
                         .setText(R.id.tv_description, data.getDescription());
             }
         };
-        recyclerView.setAdapter(mAdapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        rv.setAdapter(mAdapter);
+        rv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
         mRefreshLayout = findViewById(R.id.srl_root);
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

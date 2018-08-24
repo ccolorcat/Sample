@@ -1,5 +1,8 @@
 package cc.colorcat.sample.view;
 
+import android.os.Build;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -28,5 +31,14 @@ public abstract class BaseActivity extends AppCompatActivity implements IBase.Vi
     @Override
     public void toast(@StringRes int resId) {
         toast(getText(resId));
+    }
+
+    @ColorInt
+    protected int obtainColor(@ColorRes int resId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return getColor(resId);
+        } else {
+            return getResources().getColor(resId, getTheme());
+        }
     }
 }

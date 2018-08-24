@@ -4,9 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-import cc.colorcat.sample.WeakListener;
-import cc.colorcat.sample.api.Api;
-import cc.colorcat.sample.api.GetCoursesImpl;
+import cc.colorcat.sample.api.WeakListener;
 import cc.colorcat.sample.contact.ICourse;
 import cc.colorcat.sample.entity.Course;
 
@@ -16,7 +14,6 @@ import cc.colorcat.sample.entity.Course;
  * GitHub: https://github.com/ccolorcat
  */
 public class CoursesPresenter extends BasePresenter<ICourse.View> implements ICourse.Presenter {
-    private Api.GetCourses mCoursesService = new GetCoursesImpl();
 
     @Override
     public void onCreate(@NonNull ICourse.View view) {
@@ -35,8 +32,8 @@ public class CoursesPresenter extends BasePresenter<ICourse.View> implements ICo
     }
 
     private void loadCourses() {
-        mCoursesService.get(4, 30).send(
-                new WeakListener<ICourse.View, List<Course>>(mView) {
+        mService.listCourses(4, 30)
+                .get(new WeakListener<ICourse.View, List<Course>>(mView) {
                     @Override
                     public void onStart(ICourse.View view) {
                         super.onStart(view);
@@ -53,7 +50,6 @@ public class CoursesPresenter extends BasePresenter<ICourse.View> implements ICo
                         super.onFinish(view);
                         view.setRefreshing(false);
                     }
-                }
-        );
+                });
     }
 }
