@@ -2,6 +2,7 @@ package cc.colorcat.sample.api;
 
 import android.content.Context;
 
+import java.io.IOException;
 import java.util.Collections;
 
 import cc.colorcat.netbird.Interceptor;
@@ -39,6 +40,10 @@ public final class ApiEngine {
 
     public static <T> Object sendRequest(MRequest<T> request) {
         return netBird.send(request);
+    }
+
+    public static <T> T execute(MRequest<T> request) throws IOException {
+        return netBird.execute(request);
     }
 
     public static void cancel(Object tag) {

@@ -1,11 +1,9 @@
 package cc.colorcat.sample.presenter;
 
-import android.support.annotation.NonNull;
-
 import java.util.List;
 
 import cc.colorcat.sample.api.WeakListener;
-import cc.colorcat.sample.contact.ICourse;
+import cc.colorcat.sample.contact.IList;
 import cc.colorcat.sample.entity.Course;
 
 /**
@@ -13,43 +11,31 @@ import cc.colorcat.sample.entity.Course;
  * Date: 2018-08-23
  * GitHub: https://github.com/ccolorcat
  */
-public class CoursesPresenter extends BasePresenter<ICourse.View> implements ICourse.Presenter {
+public class CoursesPresenter extends ListPresenter<Course> {
 
     @Override
-    public void onCreate(@NonNull ICourse.View view) {
-        super.onCreate(view);
-        doGetCourses();
-    }
+    protected void realGetItems(final boolean refresh, final boolean more) {
+        mService.listCourses(4, 30).enqueue(new WeakListener<IList.View<Course>, List<Course>>(mView) {
+            @Override
+            public void onStart(IList.View<Course> view) {
+                super.onStart(view);
+                view.setRefreshing(true);
+            }
 
-    @Override
-    public void doGetCourses() {
-        loadCourses();
-    }
+            @Override
+            public void onSuccess(IList.View<Course> view, List<Course> data) {
+                if (more) {
+                    view.addMoreItems(data);
+                } else {
+                    view.refreshItems(data);
+                }
+            }
 
-    @Override
-    public void toRefreshCourses() {
-        loadCourses();
-    }
-
-    private void loadCourses() {
-        mService.listCourses(4, 30)
-                .get(new WeakListener<ICourse.View, List<Course>>(mView) {
-                    @Override
-                    public void onStart(ICourse.View view) {
-                        super.onStart(view);
-                        view.setRefreshing(true);
-                    }
-
-                    @Override
-                    public void onSuccess(ICourse.View view, List<Course> data) {
-                        view.refreshCourses(data);
-                    }
-
-                    @Override
-                    public void onFinish(ICourse.View view) {
-                        super.onFinish(view);
-                        view.setRefreshing(false);
-                    }
-                });
+            @Override
+            public void onFinish(IList.View<Course> view) {
+                super.onFinish(view);
+                view.setRefreshing(false);
+            }
+        });
     }
 }

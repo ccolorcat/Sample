@@ -1,5 +1,7 @@
 package cc.colorcat.sample.api;
 
+import java.io.IOException;
+
 /**
  * Author: cxx
  * Date: 2018-08-25
@@ -8,19 +10,9 @@ package cc.colorcat.sample.api;
 public interface ApiSender<T> {
     ApiSender<T> setCacheControl(long maxAge);
 
-    void get(ApiListener<T> listener);
+    T execute() throws IOException;
 
-    void head(ApiListener<T> listener);
-
-    void trace(ApiListener<T> listener);
-
-    void options(ApiListener<T> listener);
-
-    void post(ApiListener<T> listener);
-
-    void put(ApiListener<T> listener);
-
-    void delete(ApiListener<T> listener);
+    void enqueue(ApiListener<T> listener);
 
     void cancel();
 }

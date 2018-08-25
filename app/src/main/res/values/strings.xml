@@ -2,4 +2,6 @@
     <string name="app_name">Sample</string>
     <string name="thumbnail">thumbnail</string>
     <string name="common_net_error">network error</string>
+    <string name="show_courses_by_netbird">show courses by netbird</string>
+    <string name="test">test</string>
 </resources>
