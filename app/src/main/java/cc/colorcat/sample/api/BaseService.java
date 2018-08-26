@@ -51,57 +51,40 @@ public abstract class BaseService<T> implements ApiSender<T> {
         return this;
     }
 
-    public final BaseService<T> add(String name, double value) {
-        mBuilder.add(name, Double.toString(value));
-        return this;
-    }
-
-    public final BaseService<T> add(String name, float value) {
-        mBuilder.add(name, Float.toString(value));
-        return this;
-    }
-
     public final BaseService<T> get() {
         mBuilder.get();
         return this;
     }
-
 
     public final BaseService<T> head() {
         mBuilder.head();
         return this;
     }
 
-
     public final BaseService<T> trace() {
         mBuilder.trace();
         return this;
     }
-
 
     public final BaseService<T> options() {
         mBuilder.options();
         return this;
     }
 
-
     public final BaseService<T> post() {
         mBuilder.post();
         return this;
     }
-
 
     public final BaseService<T> put() {
         mBuilder.put();
         return this;
     }
 
-
     public final BaseService<T> delete() {
         mBuilder.delete();
         return this;
     }
-
 
     @Override
     public final ApiSender<T> setCacheControl(long maxAge) {
