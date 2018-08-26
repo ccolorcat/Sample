@@ -79,6 +79,11 @@ public abstract class ListActivity<T, P extends IList.Presenter<T>> extends Base
         mRefreshLayout.setRefreshing(refreshing);
     }
 
+    @Override
+    public String getExtra(String key) {
+        throw new UnsupportedOperationException();
+    }
+
     protected abstract P getPresenter();
 
     protected RecyclerView.LayoutManager getLayoutManager() {

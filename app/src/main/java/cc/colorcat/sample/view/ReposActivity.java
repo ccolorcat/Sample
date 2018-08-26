@@ -14,7 +14,6 @@ import cc.colorcat.adapter.RvAdapter;
 import cc.colorcat.adapter.RvHolder;
 import cc.colorcat.adapter.SimpleRvAdapter;
 import cc.colorcat.sample.R;
-import cc.colorcat.sample.contact.IRepos;
 import cc.colorcat.sample.entity.License;
 import cc.colorcat.sample.entity.Owner;
 import cc.colorcat.sample.entity.Repo;
@@ -26,13 +25,25 @@ import cc.colorcat.vangogh.VanGogh;
  * Date: 2018-08-26
  * GitHub: https://github.com/ccolorcat
  */
-public class ReposActivity extends ListActivity<Repo, ReposPresenter> implements IRepos.View {
-    private static final String USER = "user";
+public class ReposActivity extends ListActivity<Repo, ReposPresenter> {
+    public static final String USER = "user";
 
     public static void start(Context context, String user) {
         Intent intent = new Intent(context, ReposActivity.class);
         intent.putExtra(USER, user);
         context.startActivity(intent);
+    }
+
+    @Override
+    public String getExtra(String key) {
+        if (USER.equals(key)) {
+            String user = getIntent().getStringExtra(USER);
+            if (TextUtils.isEmpty(user)) {
+                throw new IllegalStateException("has no user");
+            }
+            return user;
+        }
+        return "";
     }
 
     @Override
@@ -66,14 +77,5 @@ public class ReposActivity extends ListActivity<Repo, ReposPresenter> implements
                 VanGogh.get().load(avatar).into((ImageView) helper.get(R.id.iv_icon));
             }
         };
-    }
-
-    @Override
-    public String getUser() {
-        String user = getIntent().getStringExtra(USER);
-        if (user == null) {
-            throw new IllegalStateException("has no user");
-        }
-        return user;
     }
 }

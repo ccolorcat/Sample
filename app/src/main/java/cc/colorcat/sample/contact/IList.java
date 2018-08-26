@@ -14,6 +14,8 @@ public interface IList {
         void addMoreItems(List<T> items);
 
         void setRefreshing(boolean refreshing);
+
+        String getExtra(String key);
     }
 
     interface Presenter<T> extends IBase.Presenter<View<T>> {

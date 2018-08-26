@@ -3,8 +3,5 @@
     <string name="thumbnail">thumbnail</string>
     <string name="common_net_error">network error</string>
     <string name="show_courses_by_netbird">show courses by netbird</string>
-    <string name="test">test</string>
-    <string name="input_github_user_name">input github user name</string>
-    <string name="ccolorcat">ccolorcat</string>
-    <string name="show_repos">show repos</string>
+    <string name="show_repos_by_netbird">show repos by netbird</string>
 </resources>
