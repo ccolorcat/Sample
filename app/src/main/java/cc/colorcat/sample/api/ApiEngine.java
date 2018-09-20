@@ -2,6 +2,10 @@ package cc.colorcat.sample.api;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
+
 import java.io.IOException;
 import java.util.Collections;
 
@@ -29,7 +33,16 @@ public final class ApiEngine {
                 .enableGzip(true)
                 .logLevel(debug ? Level.VERBOSE : Level.NOTHING);
         if (debug) {
-            builder.addTailInterceptor(new LoggingTailInterceptor(true));
+            builder.addTailInterceptor(new LoggingTailInterceptor(false) {
+                private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                private JsonParser parser = new JsonParser();
+
+                @Override
+                protected String formatResponse(String content, String contentType) {
+//                    return contentType;
+                    return '\n' + gson.toJson(parser.parse(content));
+                }
+            });
         }
         Interceptor cacheInterceptor = AndroidCacheInterceptor.create(context, Collections.<String>emptyList());
         if (cacheInterceptor != null) {

@@ -38,12 +38,12 @@ dependencies {
 
     implementation 'com.github.ccolorcat:Adapter:v1.1.1'
     implementation 'com.github.ccolorcat:VanGogh:v2.3.0'
-    implementation 'com.github.ccolorcat.NetBird:netbird:v4.3.1' // 基础模块，必须。
-    implementation 'com.github.ccolorcat.NetBird:netbird-android-support:v4.3.1' // Android 支持
-    implementation 'com.github.ccolorcat.NetBird:netbird-logging-support:v4.3.1' //  日志支持
-    implementation 'com.github.ccolorcat.NetBird:netbird-cache-support:v4.3.1' // 缓存支持
-    implementation 'com.github.ccolorcat.NetBird:netbird-gson-parser:v4.3.1' // gson 数据解析支持
-    implementation 'com.github.ccolorcat.NetBird:netbird-jackson-parser:v4.3.1' // jackson 数据分析支持
-    implementation 'com.github.ccolorcat.NetBird:netbird-fastjson-parser:v4.3.1' // fastjson 数据分析支持
+    implementation 'com.github.ccolorcat.NetBird:netbird:v4.3.4' // 基础模块，必须。
+    implementation 'com.github.ccolorcat.NetBird:netbird-android-support:v4.3.4' // Android 支持
+    implementation 'com.github.ccolorcat.NetBird:netbird-logging-support:v4.3.4' //  日志支持
+    implementation 'com.github.ccolorcat.NetBird:netbird-cache-support:v4.3.4' // 缓存支持
+    implementation 'com.github.ccolorcat.NetBird:netbird-gson-parser:v4.3.4' // gson 数据解析支持
+    implementation 'com.github.ccolorcat.NetBird:netbird-jackson-parser:v4.3.4' // jackson 数据分析支持
+    implementation 'com.github.ccolorcat.NetBird:netbird-fastjson-parser:v4.3.4' // fastjson 数据分析支持
     implementation 'com.google.code.gson:gson:2.8.5'
 }
