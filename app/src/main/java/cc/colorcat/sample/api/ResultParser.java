@@ -1,11 +1,17 @@
 package cc.colorcat.sample.api;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.util.ParameterizedTypeImpl;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.lang.reflect.Type;
 
 import cc.colorcat.netbird.NetworkData;
 import cc.colorcat.netbird.Parser;
@@ -20,23 +26,41 @@ import cc.colorcat.sample.entity.Result;
  */
 public class ResultParser<T> implements Parser<T> {
     private static final Gson GSON = new GsonBuilder().create();
+    private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    public static <T> ResultParser<T> create(TypeToken<Result<T>> token) {
-        if (token == null) throw new NullPointerException("token == null");
-        return new ResultParser<>(token);
+    public static <T> ResultParser<T> create(Type[] actualTypeArguments) {
+        if (actualTypeArguments == null) {
+            throw new NullPointerException("actualTypeArguments == null");
+        }
+        return new ResultParser<>(actualTypeArguments);
     }
 
-    private final TypeToken<Result<T>> mToken;
+    private final Type[] mActualTypeArguments;
 
-    private ResultParser(TypeToken<Result<T>> token) {
-        mToken = token;
+    private ResultParser(Type[] actualTypeArguments) {
+        mActualTypeArguments = actualTypeArguments;
     }
 
     @Override
     public NetworkData<? extends T> parse(Response response) throws IOException {
         try {
+            // gson
             Reader reader = response.responseBody().reader();
-            Result<T> result = GSON.fromJson(reader, mToken.getType());
+            Type type = TypeToken.getParameterized(Result.class, mActualTypeArguments).getType();
+            Result<T> result = GSON.fromJson(reader, type);
+
+            // fastjson
+//            String content = response.responseBody().string();
+//            ParameterizedTypeImpl pt = new ParameterizedTypeImpl(mActualTypeArguments, null, Result.class);
+//            Result<T> result = JSON.parseObject(content, pt);
+
+            // jackson
+//            Reader reader = response.responseBody().reader();
+//            TypeFactory factory = TypeFactory.defaultInstance();
+//            JavaType innerType = factory.constructType(mActualTypeArguments[0]);
+//            JavaType outerType = factory.constructParametricType(Result.class, innerType);
+//            Result<T> result = MAPPER.readValue(reader, outerType);
+
             if (result != null) {
                 T data = result.getData();
                 if (result.getStatus() == Result.STATUS_OK && data != null) {

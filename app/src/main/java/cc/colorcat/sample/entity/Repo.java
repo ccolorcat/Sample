@@ -1,5 +1,7 @@
 package cc.colorcat.sample.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -84,148 +86,292 @@ public class Repo {
      * default_branch : master
      */
 
+    @JSONField(name = "id")
+    @JsonProperty("id")
     @SerializedName("id")
     private int id;
+    @JSONField(name = "node_id")
+    @JsonProperty("node_id")
     @SerializedName("node_id")
     private String nodeId;
+    @JSONField(name = "name")
+    @JsonProperty("name")
     @SerializedName("name")
     private String name;
+    @JSONField(name = "full_name")
+    @JsonProperty("full_name")
     @SerializedName("full_name")
     private String fullName;
+    @JSONField(name = "owner")
+    @JsonProperty("owner")
     @SerializedName("owner")
     private Owner owner;
+    @JSONField(name = "private")
+    @JsonProperty("private")
     @SerializedName("private")
     private boolean privateX;
+    @JSONField(name = "html_url")
+    @JsonProperty("html_url")
     @SerializedName("html_url")
     private String htmlUrl;
+    @JSONField(name = "description")
+    @JsonProperty("description")
     @SerializedName("description")
     private String description;
+    @JSONField(name = "fork")
+    @JsonProperty("fork")
     @SerializedName("fork")
     private boolean fork;
+    @JSONField(name = "url")
+    @JsonProperty("url")
     @SerializedName("url")
     private String url;
+    @JSONField(name = "forks_url")
+    @JsonProperty("forks_url")
     @SerializedName("forks_url")
     private String forksUrl;
+    @JSONField(name = "keys_url")
+    @JsonProperty("keys_url")
     @SerializedName("keys_url")
     private String keysUrl;
+    @JSONField(name = "collaborators_url")
+    @JsonProperty("collaborators_url")
     @SerializedName("collaborators_url")
     private String collaboratorsUrl;
+    @JSONField(name = "teams_url")
+    @JsonProperty("teams_url")
     @SerializedName("teams_url")
     private String teamsUrl;
+    @JSONField(name = "hooks_url")
+    @JsonProperty("hooks_url")
     @SerializedName("hooks_url")
     private String hooksUrl;
+    @JSONField(name = "issue_events_url")
+    @JsonProperty("issue_events_url")
     @SerializedName("issue_events_url")
     private String issueEventsUrl;
+    @JSONField(name = "events_url")
+    @JsonProperty("events_url")
     @SerializedName("events_url")
     private String eventsUrl;
+    @JSONField(name = "assignees_url")
+    @JsonProperty("assignees_url")
     @SerializedName("assignees_url")
     private String assigneesUrl;
+    @JSONField(name = "branches_url")
+    @JsonProperty("branches_url")
     @SerializedName("branches_url")
     private String branchesUrl;
+    @JSONField(name = "tags_url")
+    @JsonProperty("tags_url")
     @SerializedName("tags_url")
     private String tagsUrl;
+    @JSONField(name = "blobs_url")
+    @JsonProperty("blobs_url")
     @SerializedName("blobs_url")
     private String blobsUrl;
+    @JSONField(name = "git_tags_url")
+    @JsonProperty("git_tags_url")
     @SerializedName("git_tags_url")
     private String gitTagsUrl;
+    @JSONField(name = "git_refs_url")
+    @JsonProperty("git_refs_url")
     @SerializedName("git_refs_url")
     private String gitRefsUrl;
+    @JSONField(name = "trees_url")
+    @JsonProperty("trees_url")
     @SerializedName("trees_url")
     private String treesUrl;
+    @JSONField(name = "statuses_url")
+    @JsonProperty("statuses_url")
     @SerializedName("statuses_url")
     private String statusesUrl;
+    @JSONField(name = "languages_url")
+    @JsonProperty("languages_url")
     @SerializedName("languages_url")
     private String languagesUrl;
+    @JSONField(name = "stargazers_url")
+    @JsonProperty("stargazers_url")
     @SerializedName("stargazers_url")
     private String stargazersUrl;
+    @JSONField(name = "contributors_url")
+    @JsonProperty("contributors_url")
     @SerializedName("contributors_url")
     private String contributorsUrl;
+    @JSONField(name = "subscribers_url")
+    @JsonProperty("subscribers_url")
     @SerializedName("subscribers_url")
     private String subscribersUrl;
+    @JSONField(name = "subscription_url")
+    @JsonProperty("subscription_url")
     @SerializedName("subscription_url")
     private String subscriptionUrl;
+    @JSONField(name = "commits_url")
+    @JsonProperty("commits_url")
     @SerializedName("commits_url")
     private String commitsUrl;
+    @JSONField(name = "git_commits_url")
+    @JsonProperty("git_commits_url")
     @SerializedName("git_commits_url")
     private String gitCommitsUrl;
+    @JSONField(name = "comments_url")
+    @JsonProperty("comments_url")
     @SerializedName("comments_url")
     private String commentsUrl;
+    @JSONField(name = "issue_comment_url")
+    @JsonProperty("issue_comment_url")
     @SerializedName("issue_comment_url")
     private String issueCommentUrl;
+    @JSONField(name = "contents_url")
+    @JsonProperty("contents_url")
     @SerializedName("contents_url")
     private String contentsUrl;
+    @JSONField(name = "compare_url")
+    @JsonProperty("compare_url")
     @SerializedName("compare_url")
     private String compareUrl;
+    @JSONField(name = "merges_url")
+    @JsonProperty("merges_url")
     @SerializedName("merges_url")
     private String mergesUrl;
+    @JSONField(name = "archive_url")
+    @JsonProperty("archive_url")
     @SerializedName("archive_url")
     private String archiveUrl;
+    @JSONField(name = "downloads_url")
+    @JsonProperty("downloads_url")
     @SerializedName("downloads_url")
     private String downloadsUrl;
+    @JSONField(name = "issues_url")
+    @JsonProperty("issues_url")
     @SerializedName("issues_url")
     private String issuesUrl;
+    @JSONField(name = "pulls_url")
+    @JsonProperty("pulls_url")
     @SerializedName("pulls_url")
     private String pullsUrl;
+    @JSONField(name = "milestones_url")
+    @JsonProperty("milestones_url")
     @SerializedName("milestones_url")
     private String milestonesUrl;
+    @JSONField(name = "notifications_url")
+    @JsonProperty("notifications_url")
     @SerializedName("notifications_url")
     private String notificationsUrl;
+    @JSONField(name = "labels_url")
+    @JsonProperty("labels_url")
     @SerializedName("labels_url")
     private String labelsUrl;
+    @JSONField(name = "releases_url")
+    @JsonProperty("releases_url")
     @SerializedName("releases_url")
     private String releasesUrl;
+    @JSONField(name = "deployments_url")
+    @JsonProperty("deployments_url")
     @SerializedName("deployments_url")
     private String deploymentsUrl;
+    @JSONField(name = "created_at")
+    @JsonProperty("created_at")
     @SerializedName("created_at")
     private String createdAt;
+    @JSONField(name = "updated_at")
+    @JsonProperty("updated_at")
     @SerializedName("updated_at")
     private String updatedAt;
+    @JSONField(name = "pushed_at")
+    @JsonProperty("pushed_at")
     @SerializedName("pushed_at")
     private String pushedAt;
+    @JSONField(name = "git_url")
+    @JsonProperty("git_url")
     @SerializedName("git_url")
     private String gitUrl;
+    @JSONField(name = "ssh_url")
+    @JsonProperty("ssh_url")
     @SerializedName("ssh_url")
     private String sshUrl;
+    @JSONField(name = "clone_url")
+    @JsonProperty("clone_url")
     @SerializedName("clone_url")
     private String cloneUrl;
+    @JSONField(name = "svn_url")
+    @JsonProperty("svn_url")
     @SerializedName("svn_url")
     private String svnUrl;
+    @JSONField(name = "homepage")
+    @JsonProperty("homepage")
     @SerializedName("homepage")
     private Object homepage;
+    @JSONField(name = "size")
+    @JsonProperty("size")
     @SerializedName("size")
     private int size;
+    @JSONField(name = "stargazers_count")
+    @JsonProperty("stargazers_count")
     @SerializedName("stargazers_count")
     private int stargazersCount;
+    @JSONField(name = "watchers_count")
+    @JsonProperty("watchers_count")
     @SerializedName("watchers_count")
     private int watchersCount;
+    @JSONField(name = "language")
+    @JsonProperty("language")
     @SerializedName("language")
     private String language;
+    @JSONField(name = "has_issues")
+    @JsonProperty("has_issues")
     @SerializedName("has_issues")
     private boolean hasIssues;
+    @JSONField(name = "has_projects")
+    @JsonProperty("has_projects")
     @SerializedName("has_projects")
     private boolean hasProjects;
+    @JSONField(name = "has_downloads")
+    @JsonProperty("has_downloads")
     @SerializedName("has_downloads")
     private boolean hasDownloads;
+    @JSONField(name = "has_wiki")
+    @JsonProperty("has_wiki")
     @SerializedName("has_wiki")
     private boolean hasWiki;
+    @JSONField(name = "has_pages")
+    @JsonProperty("has_pages")
     @SerializedName("has_pages")
     private boolean hasPages;
+    @JSONField(name = "forks_count")
+    @JsonProperty("forks_count")
     @SerializedName("forks_count")
     private int forksCount;
+    @JSONField(name = "mirror_url")
+    @JsonProperty("mirror_url")
     @SerializedName("mirror_url")
     private String mirrorUrl;
+    @JSONField(name = "archived")
+    @JsonProperty("archived")
     @SerializedName("archived")
     private boolean archived;
+    @JSONField(name = "open_issues_count")
+    @JsonProperty("open_issues_count")
     @SerializedName("open_issues_count")
     private int openIssuesCount;
+    @JSONField(name = "license")
+    @JsonProperty("license")
     @SerializedName("license")
     private License license;
+    @JSONField(name = "forks")
+    @JsonProperty("forks")
     @SerializedName("forks")
     private int forks;
+    @JSONField(name = "open_issues")
+    @JsonProperty("open_issues")
     @SerializedName("open_issues")
     private int openIssues;
+    @JSONField(name = "watchers")
+    @JsonProperty("watchers")
     @SerializedName("watchers")
     private int watchers;
+    @JSONField(name = "default_branch")
+    @JsonProperty("default_branch")
     @SerializedName("default_branch")
     private String defaultBranch;
 

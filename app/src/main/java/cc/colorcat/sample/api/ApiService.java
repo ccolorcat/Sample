@@ -3,7 +3,9 @@ package cc.colorcat.sample.api;
 import java.util.List;
 
 import cc.colorcat.netbird.MRequest;
+import cc.colorcat.parser.fastjson.FastjsonParser;
 import cc.colorcat.parser.gson.GsonParser;
+import cc.colorcat.parser.jackson.JacksonParser;
 import cc.colorcat.sample.entity.Course;
 import cc.colorcat.sample.entity.Repo;
 
@@ -28,6 +30,8 @@ public final class ApiService implements Api {
             @Override
             protected MRequest.Builder<List<Repo>> createBuilder() {
                 return new MRequest.Builder<>(new GsonParser<List<Repo>>() {});
+//                return new MRequest.Builder<>(new FastjsonParser<List<Repo>>(){});
+//                return new MRequest.Builder<>(new JacksonParser<List<Repo>>() {});
             }
         }.url("https://api.github.com/").path("users/" + user + "/repos").get();
     }

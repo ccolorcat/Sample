@@ -1,7 +1,5 @@
 package cc.colorcat.sample.api2;
 
-import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.ParameterizedType;
 
 import cc.colorcat.netbird.MRequest;
@@ -9,7 +7,6 @@ import cc.colorcat.netbird.cache.CacheControl;
 import cc.colorcat.sample.api.ApiEngine;
 import cc.colorcat.sample.api.ApiListener;
 import cc.colorcat.sample.api.ResultParser;
-import cc.colorcat.sample.entity.Result;
 
 /**
  * Author: cxx
@@ -45,7 +42,6 @@ public abstract class BaseImpl<T> implements Api2.Base<T> {
     @SuppressWarnings("unchecked")
     protected MRequest.Builder<T> create() {
         ParameterizedType pt = (ParameterizedType) getClass().getGenericSuperclass();
-        TypeToken<Result<T>> token = (TypeToken<Result<T>>) TypeToken.getParameterized(Result.class, pt.getActualTypeArguments());
-        return new MRequest.Builder<>(ResultParser.create(token));
+        return new MRequest.Builder<>(ResultParser.<T>create(pt.getActualTypeArguments()));
     }
 }

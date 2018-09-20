@@ -1,14 +1,11 @@
 package cc.colorcat.sample.api;
 
-import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import cc.colorcat.netbird.MRequest;
 import cc.colorcat.netbird.cache.CacheControl;
-import cc.colorcat.sample.entity.Result;
 
 /**
  * Author: cxx
@@ -26,9 +23,7 @@ public abstract class BaseService<T> implements ApiSender<T> {
     protected MRequest.Builder<T> createBuilder() {
         ParameterizedType pt = (ParameterizedType) getClass().getGenericSuperclass();
         Type[] types = pt.getActualTypeArguments();
-        @SuppressWarnings("unchecked")
-        TypeToken<Result<T>> token = (TypeToken<Result<T>>) TypeToken.getParameterized(Result.class, types);
-        return new MRequest.Builder<>(ResultParser.create(token));
+        return new MRequest.Builder<>(ResultParser.<T>create(types));
     }
 
     public final BaseService<T> url(String url) {

@@ -1,5 +1,7 @@
 package cc.colorcat.sample.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -17,14 +19,24 @@ public class License {
      * node_id : MDc6TGljZW5zZTI=
      */
 
+    @JSONField(name = "key")
+    @JsonProperty("key")
     @SerializedName("key")
     private String key;
+    @JSONField(name = "name")
+    @JsonProperty("name")
     @SerializedName("name")
     private String name;
+    @JSONField(name = "spdx_id")
+    @JsonProperty("spdx_id")
     @SerializedName("spdx_id")
     private String spdxId;
+    @JSONField(name = "url")
+    @JsonProperty("url")
     @SerializedName("url")
     private String url;
+    @JSONField(name = "node_id")
+    @JsonProperty("node_id")
     @SerializedName("node_id")
     private String nodeId;
 

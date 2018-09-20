@@ -1,5 +1,7 @@
 package cc.colorcat.sample.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -9,10 +11,16 @@ import com.google.gson.annotations.SerializedName;
 public class Result<T> {
     public static final int STATUS_OK = 1;
 
+    @JSONField(name = "status")
+    @JsonProperty("status")
     @SerializedName("status")
     private int status;
+    @JSONField(name = "msg")
+    @JsonProperty("msg")
     @SerializedName("msg")
     private String msg;
+    @JSONField(name = "data")
+    @JsonProperty("data")
     @SerializedName("data")
     private T data;
 

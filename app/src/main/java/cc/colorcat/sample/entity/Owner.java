@@ -1,5 +1,7 @@
 package cc.colorcat.sample.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -29,40 +31,76 @@ public class Owner {
      * site_admin : false
      */
 
+    @JsonProperty("login")
+    @JSONField(name = "login")
     @SerializedName("login")
     private String login;
+    @JsonProperty("id")
+    @JSONField(name = "id")
     @SerializedName("id")
     private int id;
+    @JsonProperty("node_id")
+    @JSONField(name = "node_id")
     @SerializedName("node_id")
     private String nodeId;
+    @JsonProperty("avatar_url")
+    @JSONField(name = "avatar_url")
     @SerializedName("avatar_url")
     private String avatarUrl;
+    @JsonProperty("gravatar_id")
+    @JSONField(name = "gravatar_id")
     @SerializedName("gravatar_id")
     private String gravatarId;
+    @JsonProperty("url")
+    @JSONField(name = "url")
     @SerializedName("url")
     private String url;
+    @JsonProperty("html_url")
+    @JSONField(name = "html_url")
     @SerializedName("html_url")
     private String htmlUrl;
+    @JsonProperty("followers_url")
+    @JSONField(name = "followers_url")
     @SerializedName("followers_url")
     private String followersUrl;
+    @JsonProperty("following_url")
+    @JSONField(name = "following_url")
     @SerializedName("following_url")
     private String followingUrl;
+    @JsonProperty("gists_url")
+    @JSONField(name = "gists_url")
     @SerializedName("gists_url")
     private String gistsUrl;
+    @JsonProperty("starred_url")
+    @JSONField(name = "starred_url")
     @SerializedName("starred_url")
     private String starredUrl;
+    @JsonProperty("subscriptions_url")
+    @JSONField(name = "subscriptions_url")
     @SerializedName("subscriptions_url")
     private String subscriptionsUrl;
+    @JsonProperty("organizations_url")
+    @JSONField(name = "organizations_url")
     @SerializedName("organizations_url")
     private String organizationsUrl;
+    @JsonProperty("repos_url")
+    @JSONField(name = "repos_url")
     @SerializedName("repos_url")
     private String reposUrl;
+    @JsonProperty("events_url")
+    @JSONField(name = "events_url")
     @SerializedName("events_url")
     private String eventsUrl;
+    @JsonProperty("received_events_url")
+    @JSONField(name = "received_events_url")
     @SerializedName("received_events_url")
     private String receivedEventsUrl;
+    @JsonProperty("type")
+    @JSONField(name = "type")
     @SerializedName("type")
     private String type;
+    @JsonProperty("site_admin")
+    @JSONField(name = "site_admin")
     @SerializedName("site_admin")
     private boolean siteAdmin;
 
