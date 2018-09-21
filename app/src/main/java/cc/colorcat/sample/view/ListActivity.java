@@ -36,21 +36,32 @@ public abstract class ListActivity<T, P extends IList.Presenter<T>> extends Base
         rv.setLayoutManager(getLayoutManager());
         mAdapter = getRvAdapter(mItems);
         rv.setAdapter(mAdapter);
-        rv.addItemDecoration(getItemDecoration());
-        rv.addOnScrollListener(new RvOnLoadMoreScrollListener() {
-            @Override
-            public void onLoadMore() {
-                mPresenter.toGetMoreItems();
-            }
-        });
+        RecyclerView.ItemDecoration decoration = getItemDecoration();
+        if (decoration != null) {
+            rv.addItemDecoration(decoration);
+        }
+        if (loadMoreEnabled()) {
+            rv.addOnScrollListener(new RvOnLoadMoreScrollListener() {
+                @Override
+                public void onLoadMore() {
+                    mPresenter.toGetMoreItems();
+                }
+            });
+        }
 
         mRefreshLayout = findViewById(R.id.srl_root);
-        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mPresenter.toRefreshItems();
-            }
-        });
+        if (refreshEnabled()) {
+            mRefreshLayout.setEnabled(true);
+            mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    mPresenter.toRefreshItems();
+                }
+            });
+        } else {
+            mRefreshLayout.setEnabled(false);
+        }
+
         mPresenter.onCreate(this);
     }
 
@@ -84,7 +95,13 @@ public abstract class ListActivity<T, P extends IList.Presenter<T>> extends Base
         throw new UnsupportedOperationException();
     }
 
-    protected abstract P getPresenter();
+    protected boolean loadMoreEnabled() {
+        return false;
+    }
+
+    protected boolean refreshEnabled() {
+        return true;
+    }
 
     protected RecyclerView.LayoutManager getLayoutManager() {
         return new LinearLayoutManager(this);
@@ -95,4 +112,6 @@ public abstract class ListActivity<T, P extends IList.Presenter<T>> extends Base
     }
 
     protected abstract RvAdapter getRvAdapter(List<T> items);
+
+    protected abstract P getPresenter();
 }

@@ -1,5 +1,8 @@
 package cc.colorcat.sample.presenter;
 
+import java.util.List;
+
+import cc.colorcat.sample.api.ApiListener;
 import cc.colorcat.sample.entity.Course;
 
 /**
@@ -10,9 +13,7 @@ import cc.colorcat.sample.entity.Course;
 public class CoursesPresenter extends ListPresenter<Course> {
 
     @Override
-    protected void realGetItems(final boolean refresh, final boolean more) {
-        if (!more) {
-            mService.listCourses(4, 30).enqueue(getWeakListener(refresh, false));
-        }
+    protected void realGetItems(boolean refresh, boolean more, ApiListener<List<Course>> listener) {
+        mService.listCourses(4, 30).enqueue(listener);
     }
 }

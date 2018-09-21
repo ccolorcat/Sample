@@ -2,6 +2,9 @@ package cc.colorcat.sample.presenter;
 
 import android.support.annotation.NonNull;
 
+import java.util.List;
+
+import cc.colorcat.sample.api.ApiListener;
 import cc.colorcat.sample.contact.IList;
 import cc.colorcat.sample.entity.Repo;
 import cc.colorcat.sample.view.ReposActivity;
@@ -21,9 +24,7 @@ public class ReposPresenter extends ListPresenter<Repo> {
     }
 
     @Override
-    protected void realGetItems(boolean refresh, boolean more) {
-        if (!more) {
-            mService.listRepos(mUser).enqueue(getWeakListener(refresh, false));
-        }
+    protected void realGetItems(boolean refresh, boolean more, ApiListener<List<Repo>> listener) {
+        mService.listRepos(mUser).enqueue(listener);
     }
 }

@@ -47,6 +47,11 @@ public class ReposActivity extends ListActivity<Repo, ReposPresenter> {
     }
 
     @Override
+    protected boolean refreshEnabled() {
+        return false;
+    }
+
+    @Override
     protected ReposPresenter getPresenter() {
         return new ReposPresenter();
     }
