@@ -1,7 +1,7 @@
 package cc.colorcat.sample.view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import cc.colorcat.sample.R;

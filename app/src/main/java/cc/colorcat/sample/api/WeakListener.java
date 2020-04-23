@@ -1,6 +1,6 @@
 package cc.colorcat.sample.api;
 
-import android.support.annotation.CallSuper;
+import androidx.annotation.CallSuper;
 import android.util.Log;
 
 import java.lang.ref.Reference;
@@ -8,9 +8,7 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 
 import cc.colorcat.netbird.HttpStatus;
-import cc.colorcat.netbird.MRequest;
 import cc.colorcat.sample.R;
-import cc.colorcat.sample.api.ApiListener;
 import cc.colorcat.sample.contact.IBase;
 
 
